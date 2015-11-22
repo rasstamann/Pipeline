@@ -67,7 +67,7 @@ BEGIN
 WAIT for 5 ns;                                                       
 END PROCESS;
                                            
-PROCESS                                              
+PROCESS(clk)                                             
 	variable t:integer := 0;
 BEGIN                                                         
 	if (rising_edge(clk)) then
@@ -75,10 +75,10 @@ BEGIN
 			data_in<=(others => '1');
 			load<='1';
 			t:=t+1;
-		elseif (t=1) then
+		elsif (t=1) then
 			reset<='1';
 			t:=t+1;
-		elseif (t=2) then
+		elsif (t=2) then
 			reset<='0';
 			load<='0';
 			inc<='1';
